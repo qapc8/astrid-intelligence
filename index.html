@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrid Strategic Intelligence Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav-brand">
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#0B2545"/>
+                    <path d="M8 16L16 8L24 16L16 24Z" fill="#4A90D9" opacity="0.8"/>
+                    <path d="M12 16L16 12L20 16L16 20Z" fill="#8BBAF0"/>
+                    <circle cx="16" cy="16" r="2" fill="white"/>
+                </svg>
+            </div>
+            <div>
+                <span class="nav-title">Astrid Strategic Intelligence Platform</span>
+                <span class="nav-subtitle">Foresight Engine v2.0</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="nav-link active" data-page="dashboard">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                Dashboard
+            </a>
+            <a href="#" class="nav-link" data-page="signals">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><path d="M8.5 8.5a5 5 0 017 0"/><path d="M5.5 5.5a9 9 0 0113 0"/></svg>
+                Signals
+            </a>
+            <a href="#" class="nav-link" data-page="trends">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Trends
+            </a>
+            <a href="#" class="nav-link" data-page="drivers">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                Drivers
+            </a>
+            <a href="#" class="nav-link" data-page="scenarios">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                Scenarios
+            </a>
+            <a href="#" class="nav-link" data-page="strategy">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                Strategy
+            </a>
+            <a href="#" class="nav-link" data-page="intelligence-map">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/><line x1="7.5" y1="7.5" x2="10.5" y2="10.5"/><line x1="13.5" y1="10.5" x2="16.5" y2="7.5"/><line x1="7.5" y1="16.5" x2="10.5" y2="13.5"/><line x1="13.5" y1="13.5" x2="16.5" y2="16.5"/></svg>
+                Intelligence Map
+            </a>
+            <a href="#" class="nav-link" data-page="architecture">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg>
+                Architecture
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- DASHBOARD PAGE -->
+        <section class="page active" id="page-dashboard">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Executive Dashboard</h1>
+                    <p class="page-desc">Real-time intelligence overview across all foresight dimensions</p>
+                </div>
+                <div class="header-actions">
+                    <span class="last-updated">Last updated: Feb 16, 2026 18:00 UTC</span>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #EBF4FF; color: #1E40AF;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><path d="M8.5 8.5a5 5 0 017 0"/><path d="M5.5 5.5a9 9 0 0113 0"/></svg>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-value">247</span>
+                        <span class="kpi-label">Active Signals</span>
+                        <span class="kpi-change positive">+18 this week</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #F0FDF4; color: #166534;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-value">42</span>
+                        <span class="kpi-label">Monitored Trends</span>
+                        <span class="kpi-change positive">+3 emerging</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #FFF7ED; color: #9A3412;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-value">16</span>
+                        <span class="kpi-label">Key Drivers</span>
+                        <span class="kpi-change neutral">4 high uncertainty</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #FDF2F8; color: #9D174D;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="kpi-content">
+                        <span class="kpi-value">5</span>
+                        <span class="kpi-label">Wild Cards</span>
+                        <span class="kpi-change negative">2 elevated</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Charts Row -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Strong signals now outnumber weak signals 2:1</h3>
+                        <span class="card-badge">247 signals</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="signalDistChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">AI-related trends accelerated sharply since Q3 2025</h3>
+                        <span class="card-badge">Last 12 months</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendMomentumChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foresight Pipeline -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Foresight Pipeline: Signals to Strategy</h3>
+                    <span class="card-badge">End-to-end process</span>
+                </div>
+                <div class="pipeline">
+                    <div class="pipeline-step">
+                        <div class="pipeline-icon" style="background: #DBEAFE;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2"><circle cx="12" cy="12" r="1"/><path d="M8.5 8.5a5 5 0 017 0"/><path d="M5.5 5.5a9 9 0 0113 0"/></svg>
+                        </div>
+                        <div class="pipeline-label">Signals</div>
+                        <div class="pipeline-count">247</div>
+                        <div class="pipeline-desc">Scan & Detect</div>
+                    </div>
+                    <div class="pipeline-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-icon" style="background: #D1FAE5;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#166534" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </div>
+                        <div class="pipeline-label">Trends</div>
+                        <div class="pipeline-count">42</div>
+                        <div class="pipeline-desc">Monitor & Validate</div>
+                    </div>
+                    <div class="pipeline-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-icon" style="background: #FEF3C7;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#92400E" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                        </div>
+                        <div class="pipeline-label">Drivers</div>
+                        <div class="pipeline-count">16</div>
+                        <div class="pipeline-desc">Analyze Forces</div>
+                    </div>
+                    <div class="pipeline-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-icon" style="background: #EDE9FE;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5B21B6" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                        </div>
+                        <div class="pipeline-label">Scenarios</div>
+                        <div class="pipeline-count">4</div>
+                        <div class="pipeline-desc">Build Futures</div>
+                    </div>
+                    <div class="pipeline-arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="pipeline-icon" style="background: #FCE7F3;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9D174D" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                        </div>
+                        <div class="pipeline-label">Strategy</div>
+                        <div class="pipeline-count">12</div>
+                        <div class="pipeline-desc">Act & Monitor</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signal Heat Map + Top Signals -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Signal Heat Map by Domain</h3>
+                    </div>
+                    <div class="heatmap" id="signalHeatmap"></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Top Signals Requiring Attention</h3>
+                    </div>
+                    <div class="signal-list" id="topSignalsList"></div>
+                </div>
+            </div>
+
+            <!-- Scenario Overview -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Scenario Landscape</h3>
+                    <span class="card-badge">4 scenarios mapped</span>
+                </div>
+                <div class="scenario-matrix" id="dashScenarioMatrix"></div>
+            </div>
+        </section>
+
+        <!-- SIGNALS PAGE -->
+        <section class="page" id="page-signals">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Signal Intelligence</h1>
+                    <p class="page-desc">Detect, assess, and cluster early indicators of change across all domains</p>
+                </div>
+            </div>
+
+            <!-- Signal Definitions -->
+            <div class="grid-2">
+                <div class="card definition-card">
+                    <div class="def-badge weak">Weak Signal</div>
+                    <p class="def-text">An early, ambiguous, low-visibility indicator of potentially significant change.</p>
+                    <ul class="def-chars">
+                        <li>Small scale or niche adoption</li>
+                        <li>High uncertainty, poorly understood implications</li>
+                        <li>Often dismissed initially</li>
+                        <li>May contradict dominant assumptions</li>
+                    </ul>
+                    <div class="def-example">
+                        <strong>Example:</strong> Early experiments with generative AI in 2018-2019
+                    </div>
+                </div>
+                <div class="card definition-card">
+                    <div class="def-badge strong">Strong Signal</div>
+                    <p class="def-text">A clear, validated, and increasingly influential indicator of change likely to shape systems.</p>
+                    <ul class="def-chars">
+                        <li>Observable across multiple contexts</li>
+                        <li>Growing adoption or institutional uptake</li>
+                        <li>Backed by investment, policy, or infrastructure</li>
+                        <li>Recognized by mainstream actors</li>
+                    </ul>
+                    <div class="def-example">
+                        <strong>Example:</strong> Mainstream AI deployment across sectors
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signal Assessment Framework -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Enhanced Signal Strength Assessment Framework</h3>
+                    <span class="card-badge">7 dimensions / 35 max score</span>
+                </div>
+                <p class="card-desc">Score each dimension from 1 (weak) to 5 (strong). The enhanced framework adds Evidence Diversity and Temporal Acceleration for dynamic, source-validated signal assessment.</p>
+
+                <div class="assessment-grid assessment-grid-7">
+                    <div class="assessment-dimension">
+                        <div class="dim-header">
+                            <span class="dim-number">1</span>
+                            <span class="dim-title">Adoption Momentum</span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>Isolated experiment</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>Growing community</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>Mainstream scaling</span></div>
+                        </div>
+                    </div>
+                    <div class="assessment-dimension">
+                        <div class="dim-header">
+                            <span class="dim-number">2</span>
+                            <span class="dim-title">Cross-Domain Spread</span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>Single niche context</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>Multiple sectors</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>Systemic diffusion</span></div>
+                        </div>
+                    </div>
+                    <div class="assessment-dimension">
+                        <div class="dim-header">
+                            <span class="dim-number">3</span>
+                            <span class="dim-title">Investment & Resources</span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>No capital backing</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>Pilot funding / VC</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>Major capital / policy</span></div>
+                        </div>
+                    </div>
+                    <div class="assessment-dimension">
+                        <div class="dim-header">
+                            <span class="dim-number">4</span>
+                            <span class="dim-title">Narrative Coherence</span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>Unclear meaning</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>Emerging explanation</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>Widely articulated</span></div>
+                        </div>
+                    </div>
+                    <div class="assessment-dimension">
+                        <div class="dim-header">
+                            <span class="dim-number">5</span>
+                            <span class="dim-title">Systemic Impact</span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>Marginal change</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>Sector disruption</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>System transformation</span></div>
+                        </div>
+                    </div>
+                    <div class="assessment-dimension" style="border: 2px solid #3B82F6;">
+                        <div class="dim-header">
+                            <span class="dim-number" style="background:#3B82F6;">6</span>
+                            <span class="dim-title">Evidence Diversity <span style="font-size:9px;color:#3B82F6;">NEW</span></span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>Single source type</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>2-3 source types</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>4+ independent types</span></div>
+                        </div>
+                    </div>
+                    <div class="assessment-dimension" style="border: 2px solid #3B82F6;">
+                        <div class="dim-header">
+                            <span class="dim-number" style="background:#3B82F6;">7</span>
+                            <span class="dim-title">Temporal Acceleration <span style="font-size:9px;color:#3B82F6;">NEW</span></span>
+                        </div>
+                        <div class="dim-scale">
+                            <div class="scale-item"><span class="scale-score">1</span><span>Decelerating / stalled</span></div>
+                            <div class="scale-item"><span class="scale-score">3</span><span>Steady growth</span></div>
+                            <div class="scale-item"><span class="scale-score">5</span><span>Exponential acceleration</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="score-interpretation">
+                    <div class="score-range weak-range">
+                        <span class="range-label">7 - 14</span>
+                        <span class="range-desc">Weak Signal</span>
+                        <div class="range-bar" style="width: 33%; background: #93C5FD;"></div>
+                    </div>
+                    <div class="score-range mid-range">
+                        <span class="range-label">15 - 24</span>
+                        <span class="range-desc">Strengthening Signal</span>
+                        <div class="range-bar" style="width: 50%; background: #3B82F6;"></div>
+                    </div>
+                    <div class="score-range strong-range">
+                        <span class="range-label">25 - 35</span>
+                        <span class="range-desc">Strong Signal</span>
+                        <div class="range-bar" style="width: 100%; background: #1E3A5F;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Signal Scorer -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Interactive Signal Scorer</h3>
+                    <button class="btn btn-primary" onclick="resetScorer()">Reset</button>
+                </div>
+                <div class="scorer-grid scorer-grid-7" id="signalScorer">
+                    <div class="scorer-dimension" data-dim="adoption">
+                        <label>Adoption Momentum</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                    <div class="scorer-dimension" data-dim="spread">
+                        <label>Cross-Domain Spread</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                    <div class="scorer-dimension" data-dim="investment">
+                        <label>Investment & Resources</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                    <div class="scorer-dimension" data-dim="narrative">
+                        <label>Narrative Coherence</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                    <div class="scorer-dimension" data-dim="impact">
+                        <label>Systemic Impact</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                    <div class="scorer-dimension" data-dim="evidence">
+                        <label>Evidence Diversity</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                    <div class="scorer-dimension" data-dim="acceleration">
+                        <label>Temporal Acceleration</label>
+                        <div class="scorer-buttons">
+                            <button class="score-btn" data-score="1">1</button>
+                            <button class="score-btn" data-score="2">2</button>
+                            <button class="score-btn" data-score="3">3</button>
+                            <button class="score-btn" data-score="4">4</button>
+                            <button class="score-btn" data-score="5">5</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="scorer-result" id="scorerResult">
+                    <div class="result-score">
+                        <span class="result-number" id="totalScore">0</span>
+                        <span class="result-max">/ 35</span>
+                    </div>
+                    <div class="result-classification" id="scoreClassification">Select scores above</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar" id="scoreBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signal Cluster Map -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Signal Cluster Map</h3>
+                    <span class="card-badge">Thematic clustering</span>
+                </div>
+                <div class="cluster-map" id="signalClusterMap"></div>
+            </div>
+
+            <!-- Signal Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Signal Registry</h3>
+                    <div class="table-controls">
+                        <select class="filter-select" id="signalDomainFilter" onchange="filterSignals()">
+                            <option value="all">All Domains</option>
+                            <option value="technology">Technology</option>
+                            <option value="geopolitics">Geopolitics</option>
+                            <option value="economy">Economy</option>
+                            <option value="environment">Environment</option>
+                            <option value="society">Society</option>
+                        </select>
+                        <select class="filter-select" id="signalStrengthFilter" onchange="filterSignals()">
+                            <option value="all">All Strengths</option>
+                            <option value="weak">Weak (7-14)</option>
+                            <option value="strengthening">Strengthening (15-24)</option>
+                            <option value="strong">Strong (25-35)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table" id="signalTable">
+                        <thead>
+                            <tr>
+                                <th>Signal</th>
+                                <th>Domain</th>
+                                <th>Strength</th>
+                                <th>Score</th>
+                                <th>Trend Link</th>
+                                <th>Cynefin</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="signalTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRENDS PAGE -->
+        <section class="page" id="page-trends">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Trend Analysis</h1>
+                    <p class="page-desc">Monitor trend trajectories, directionality, and threshold transitions</p>
+                </div>
+            </div>
+
+            <!-- Trend Monitoring Framework -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Trend Monitoring Framework</h3>
+                </div>
+                <div class="framework-flow">
+                    <div class="flow-step">
+                        <div class="flow-icon blue">1</div>
+                        <h4>Signal Clustering</h4>
+                        <p>Signals become trends after gaining momentum across multiple indicators</p>
+                    </div>
+                    <div class="flow-connector"></div>
+                    <div class="flow-step">
+                        <div class="flow-icon green">2</div>
+                        <h4>Threshold Analysis</h4>
+                        <p>Continuous monitoring against defined thresholds for trend classification</p>
+                    </div>
+                    <div class="flow-connector"></div>
+                    <div class="flow-step">
+                        <div class="flow-icon amber">3</div>
+                        <h4>Directionality</h4>
+                        <p>Track whether trends are accelerating, stable, decelerating, or reversing</p>
+                    </div>
+                    <div class="flow-connector"></div>
+                    <div class="flow-step">
+                        <div class="flow-icon purple">4</div>
+                        <h4>Force Mapping</h4>
+                        <p>Identify the underlying drivers and forces behind each validated trend</p>
+                    </div>
+                </div>
+                <div class="framework-note">
+                    <strong>Feedback Loop:</strong> Trends must maintain continuous signal input to remain classified as trends. If supporting signals weaken, the trend is reclassified back to the signal pool for re-evaluation.
+                </div>
+            </div>
+
+            <!-- Trend Direction Chart -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Trend Directionality</h3>
+                        <span class="card-badge">42 trends tracked</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendDirectionChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Trend Maturity Curve</h3>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trendMaturityChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top 10 Trends -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Top 10 Monitored Trends</h3>
+                    <span class="card-badge">Ranked by composite score</span>
+                </div>
+                <div class="trend-cards" id="topTrendsGrid"></div>
+            </div>
+
+            <!-- Trend-Signal Relationship -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Trend-Signal Relationship Map</h3>
+                </div>
+                <div class="relationship-map" id="trendSignalMap"></div>
+            </div>
+        </section>
+
+        <!-- DRIVERS PAGE -->
+        <section class="page" id="page-drivers">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Driver Analysis</h1>
+                    <p class="page-desc">Identify and score the fundamental forces pushing trends forward</p>
+                </div>
+            </div>
+
+            <!-- Driver Framework -->
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Impact-Uncertainty Scoring</h3>
+                    </div>
+                    <p class="card-desc">Each driver is scored on two critical dimensions to determine its role in scenario construction.</p>
+                    <div class="impact-uncertainty-grid" id="impactUncertaintyChart"></div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Driver Classification</h3>
+                    </div>
+                    <div class="driver-classification">
+                        <div class="classification-box enabling">
+                            <h4>Enabling Drivers</h4>
+                            <p>Forces that accelerate positive change and open new possibilities</p>
+                            <ul id="enablingDriversList"></ul>
+                        </div>
+                        <div class="classification-box friction">
+                            <h4>Friction Drivers</h4>
+                            <p>Forces that constrain, slow, or redirect change trajectories</p>
+                            <ul id="frictionDriversList"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Driver Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Driver Registry</h3>
+                    <span class="card-badge">16 active drivers</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Driver</th>
+                                <th>Type</th>
+                                <th>Impact</th>
+                                <th>Uncertainty</th>
+                                <th>Scenario Role</th>
+                                <th>Linked Trends</th>
+                            </tr>
+                        </thead>
+                        <tbody id="driverTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Trend-Force Relationship -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Trend-Force Relationship Analysis</h3>
+                </div>
+                <div class="force-network" id="forceNetwork"></div>
+            </div>
+        </section>
+
+        <!-- SCENARIOS PAGE -->
+        <section class="page" id="page-scenarios">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Scenario Engine</h1>
+                    <p class="page-desc">Build, stress-test, and monitor plausible future scenarios from dimensions of critical uncertainty</p>
+                </div>
+            </div>
+
+            <!-- Dimensions of Uncertainty -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Dimensions of Critical Uncertainty</h3>
+                    <span class="card-badge">Scenario axes</span>
+                </div>
+                <p class="card-desc">The two dimensions with the highest combination of impact and uncertainty form the axes of the scenario matrix.</p>
+                <div class="uncertainty-dims">
+                    <div class="dim-axis axis-x">
+                        <div class="axis-label">X-Axis: Geo-economic Integration</div>
+                        <div class="axis-range">
+                            <span class="axis-low">Fragmentation & Protectionism</span>
+                            <div class="axis-line"></div>
+                            <span class="axis-high">Open & Integrated Global System</span>
+                        </div>
+                    </div>
+                    <div class="dim-axis axis-y">
+                        <div class="axis-label">Y-Axis: Productivity & Policy Coherence</div>
+                        <div class="axis-range">
+                            <span class="axis-low">Stagnation & Weak Governance</span>
+                            <div class="axis-line"></div>
+                            <span class="axis-high">High Productivity & Strong Policy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario Matrix -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Scenario Matrix</h3>
+                </div>
+                <div class="scenario-matrix-full" id="scenarioMatrixFull">
+                    <div class="matrix-y-label">
+                        <span class="y-high">High Productivity &<br>Policy Coherence</span>
+                        <span class="y-low">Low Productivity &<br>Weak Governance</span>
+                    </div>
+                    <div class="matrix-grid-full">
+                        <div class="scenario-cell s2" onclick="showScenarioDetail(2)">
+                            <div class="scenario-number">S2</div>
+                            <h4>Regionalized Resilience</h4>
+                            <p>Productivity is strong, but scale is regionalized. Duplication of supply chains raises costs but boosts strategic sectors.</p>
+                            <div class="scenario-tag">Fragmented + Productive</div>
+                        </div>
+                        <div class="scenario-cell s3" onclick="showScenarioDetail(3)">
+                            <div class="scenario-number">S3</div>
+                            <h4>Global Renaissance</h4>
+                            <p>Scale + open trade + strong productivity unlocks global champions and capital-intensive innovation.</p>
+                            <div class="scenario-tag">Integrated + Productive</div>
+                        </div>
+                        <div class="scenario-cell s1" onclick="showScenarioDetail(1)">
+                            <div class="scenario-number">S1</div>
+                            <h4>Fortress World</h4>
+                            <p>High capital costs + fragmentation = defensive positioning, protectionism, and domestic survival economics.</p>
+                            <div class="scenario-tag">Fragmented + Stagnant</div>
+                        </div>
+                        <div class="scenario-cell s4" onclick="showScenarioDetail(4)">
+                            <div class="scenario-number">S4</div>
+                            <h4>Open but Adrift</h4>
+                            <p>Open system but weak growth. Investors favor stability and dividends over innovation.</p>
+                            <div class="scenario-tag">Integrated + Stagnant</div>
+                        </div>
+                    </div>
+                    <div class="matrix-x-label">
+                        <span class="x-low">Fragmentation &<br>Protectionism</span>
+                        <span class="x-high">Open & Integrated<br>Global System</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scenario Details -->
+            <div class="scenario-details" id="scenarioDetails">
+                <div class="card scenario-detail-card" id="scenarioDetailCard" style="display:none;">
+                    <div class="card-header">
+                        <h3 class="card-title" id="scenarioDetailTitle">Scenario Details</h3>
+                        <button class="btn btn-secondary" onclick="closeScenarioDetail()">Close</button>
+                    </div>
+                    <div class="scenario-detail-content" id="scenarioDetailContent"></div>
+                </div>
+            </div>
+
+            <!-- Robust Winners -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Cross-Scenario Analysis: Robust Winners</h3>
+                    <span class="card-badge">Resilient across 3+ scenarios</span>
+                </div>
+                <div class="grid-2" style="gap: 24px;">
+                    <div>
+                        <h4 class="subsection-title">Robust Sector Winners</h4>
+                        <div class="robust-list">
+                            <div class="robust-item"><span class="robust-dot green"></span>Cybersecurity</div>
+                            <div class="robust-item"><span class="robust-dot green"></span>Defense</div>
+                            <div class="robust-item"><span class="robust-dot green"></span>Utilities & Grid Infrastructure</div>
+                            <div class="robust-item"><span class="robust-dot green"></span>Healthcare</div>
+                            <div class="robust-item"><span class="robust-dot green"></span>Energy Security Assets</div>
+                            <div class="robust-item"><span class="robust-dot green"></span>Critical Minerals</div>
+                        </div>
+                        <p class="robust-label">These are <strong>resilience sectors</strong> - they thrive regardless of which scenario unfolds.</p>
+                    </div>
+                    <div>
+                        <h4 class="subsection-title">Robust Geographic Winners</h4>
+                        <div class="robust-list">
+                            <div class="robust-item"><span class="robust-dot blue"></span>United States</div>
+                            <div class="robust-item"><span class="robust-dot blue"></span>India</div>
+                            <div class="robust-item"><span class="robust-dot blue"></span>Gulf Energy Exporters (diversifying)</div>
+                            <div class="robust-item"><span class="robust-dot blue"></span>Large Diversified Economies</div>
+                        </div>
+                        <h4 class="subsection-title" style="margin-top: 20px;">Highly Scenario-Dependent</h4>
+                        <div class="robust-list">
+                            <div class="robust-item"><span class="robust-dot amber"></span>Germany - integration vs fragmentation</div>
+                            <div class="robust-item"><span class="robust-dot amber"></span>Vietnam - open trade vs bloc fragmentation</div>
+                            <div class="robust-item"><span class="robust-dot amber"></span>Singapore - integration vs stagnation</div>
+                            <div class="robust-item"><span class="robust-dot amber"></span>Taiwan - productivity vs geopolitical stress</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wild Cards -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Wild Card Monitor</h3>
+                    <span class="card-badge negative">5 active</span>
+                </div>
+                <div class="wildcard-grid" id="wildcardGrid"></div>
+            </div>
+        </section>
+
+        <!-- STRATEGY PAGE -->
+        <section class="page" id="page-strategy">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Strategic Options</h1>
+                    <p class="page-desc">Stress-test strategies, map roads forward, and maintain strategic optionality</p>
+                </div>
+            </div>
+
+            <!-- Strategic Questions Framework -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Strategic Intelligence Questions Framework</h3>
+                    <span class="card-badge">Chronological sequence</span>
+                </div>
+                <div class="questions-framework">
+                    <div class="question-item">
+                        <div class="q-phase">Comprehension</div>
+                        <div class="q-num">Q1</div>
+                        <div class="q-text">What is this topic and why is it important?</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Comprehension</div>
+                        <div class="q-num">Q2</div>
+                        <div class="q-text">What is happening? (Signals & Trends)</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Comprehension</div>
+                        <div class="q-num">Q3</div>
+                        <div class="q-text">Who is acting? (Stakeholder mapping)</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Sense-making</div>
+                        <div class="q-num">Q4</div>
+                        <div class="q-text">What forces can influence the trajectory? (Driver analysis)</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Sense-making</div>
+                        <div class="q-num">Q5</div>
+                        <div class="q-text">What could happen? (Scenario construction)</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Sense-making</div>
+                        <div class="q-num">Q6</div>
+                        <div class="q-text">Who could gain or lose power?</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Application</div>
+                        <div class="q-num">Q7</div>
+                        <div class="q-text">What could become real later? (Anticipatory intelligence)</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Application</div>
+                        <div class="q-num">Q8</div>
+                        <div class="q-text">Where are we exposed or unprepared?</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Application</div>
+                        <div class="q-num">Q9</div>
+                        <div class="q-text">How do we keep options open? (Strategic optionality)</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="q-phase">Application</div>
+                        <div class="q-num">Q10</div>
+                        <div class="q-text">What cross-sectoral dynamics should we monitor? (Horizontal intelligence)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategy Stress Testing -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Strategy Stress-Testing Matrix</h3>
+                    <span class="card-badge">Test strategies against all scenarios</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table stress-table">
+                        <thead>
+                            <tr>
+                                <th>Strategic Option</th>
+                                <th class="scenario-col s1-col">S1: Fortress World</th>
+                                <th class="scenario-col s2-col">S2: Regionalized Resilience</th>
+                                <th class="scenario-col s3-col">S3: Global Renaissance</th>
+                                <th class="scenario-col s4-col">S4: Open but Adrift</th>
+                                <th>Robustness</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stressTestBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Road Map -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Strategic Roadmap</h3>
+                </div>
+                <div class="roadmap" id="strategicRoadmap"></div>
+            </div>
+
+            <!-- Monitoring Indicators -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Scenario Predictability Monitoring</h3>
+                    <span class="card-badge">Leading indicators</span>
+                </div>
+                <div class="monitoring-grid" id="monitoringGrid"></div>
+            </div>
+
+            <!-- Probability Calibration -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Probability Calibration</h3>
+                    <span class="card-badge">Multi-source validation</span>
+                </div>
+                <div class="calibration-methods">
+                    <div class="calib-method">
+                        <div class="calib-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <h4>Crowd-sourcing</h4>
+                        <p>Aggregate expert forecasts using prediction markets and Delphi method</p>
+                    </div>
+                    <div class="calib-method">
+                        <div class="calib-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                        </div>
+                        <h4>Case Studies</h4>
+                        <p>Historical pattern matching with analogous past situations</p>
+                    </div>
+                    <div class="calib-method">
+                        <div class="calib-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h4>Historical Analogues</h4>
+                        <p>Base rates from historical precedents and structural similarities</p>
+                    </div>
+                    <div class="calib-method">
+                        <div class="calib-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        </div>
+                        <h4>Driver Alignment</h4>
+                        <p>Assess how current driver trajectories align with each scenario</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTELLIGENCE MAP PAGE -->
+        <section class="page" id="page-intelligence-map">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Intelligence Map</h1>
+                    <p class="page-desc">AI-powered 3D topic network based on WEF Strategic Intelligence taxonomy</p>
+                </div>
+                <div class="header-actions" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                    <div class="filter-btn-group">
+                        <button class="filter-btn active" data-filter="all" onclick="setTopicFilter('all')">All</button>
+                        <button class="filter-btn" data-filter="global" onclick="setTopicFilter('global')">Global Issues</button>
+                        <button class="filter-btn" data-filter="industry" onclick="setTopicFilter('industry')">Industries</button>
+                    </div>
+                    <button class="btn btn-primary" id="btnScanNews" onclick="scanNewsWithAI()">
+                        <span id="scanBtnText">Scan Global News</span>
+                    </button>
+                    <button class="btn btn-secondary" id="btnRecommendLinks" onclick="recommendLinksWithAI()">
+                        <span id="linkBtnText">AI: Recommend Links</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="resetMapView()">Reset View</button>
+                </div>
+            </div>
+
+            <!-- AI Status Bar -->
+            <div class="ai-status-bar" id="aiStatusBar" style="display:none;">
+                <div class="ai-status-indicator"></div>
+                <span class="ai-status-text" id="aiStatusText">AI is analyzing...</span>
+                <div class="ai-progress-bar"><div class="ai-progress-fill" id="aiProgressFill"></div></div>
+            </div>
+
+            <!-- Main Map + Side Panel Layout -->
+            <div class="map-layout">
+                <!-- 3D Map Container -->
+                <div class="map-container-wrapper">
+                    <div class="map-container" id="map3dContainer">
+                        <div class="map-loading" id="mapLoading">Initializing 3D Intelligence Map...</div>
+                    </div>
+                    <div class="map-legend">
+                        <div class="legend-title">WEF Topic Clusters</div>
+                        <div class="legend-items" id="mapLegend"></div>
+                    </div>
+                    <div class="map-controls">
+                        <button class="map-ctrl-btn" onclick="toggleLabels()" title="Toggle Labels">Aa</button>
+                        <button class="map-ctrl-btn" onclick="toggleLinks()" title="Toggle Links">&#8596;</button>
+                        <button class="map-ctrl-btn" onclick="focusSelected()" title="Focus Selected">&#9673;</button>
+                    </div>
+                </div>
+
+                <!-- Side Panel -->
+                <div class="map-side-panel" id="mapSidePanel">
+                    <!-- Topic Detail (shown when node clicked) -->
+                    <div class="side-section" id="topicDetail" style="display:none;">
+                        <div class="side-section-header">
+                            <h4 id="topicDetailTitle">Topic</h4>
+                            <button class="side-close" onclick="closeTopicDetail()">&times;</button>
+                        </div>
+                        <div class="topic-meta" id="topicDetailMeta"></div>
+                        <div class="topic-key-issues" id="topicKeyIssues" style="display:none;"></div>
+                        <div class="topic-connections" id="topicDetailConnections"></div>
+                        <div class="topic-actions">
+                            <button class="btn btn-primary btn-sm" onclick="aiAnalyzeTopic()">
+                                AI: Analyze Causality
+                            </button>
+                            <button class="btn btn-secondary btn-sm" onclick="aiCompoundOutcome()">
+                                AI: Compound Outcomes
+                            </button>
+                            <button class="btn btn-accent btn-sm" onclick="generateTopicScenarios()">
+                                AI: Generate Scenarios
+                            </button>
+                        </div>
+                        <div class="ai-result-box" id="topicAIResult" style="display:none;">
+                            <div class="ai-result-header">AI Analysis</div>
+                            <div class="ai-result-content" id="topicAIResultContent"></div>
+                        </div>
+                    </div>
+
+                    <!-- AI News Scan Results -->
+                    <div class="side-section" id="newsScanResults" style="display:none;">
+                        <div class="side-section-header">
+                            <h4>AI News Scan</h4>
+                            <button class="side-close" onclick="document.getElementById('newsScanResults').style.display='none'">&times;</button>
+                        </div>
+                        <div id="newsScanContent"></div>
+                    </div>
+
+                    <!-- AI Link Recommendations -->
+                    <div class="side-section" id="linkRecommendations" style="display:none;">
+                        <div class="side-section-header">
+                            <h4>AI Recommended Links</h4>
+                            <button class="side-close" onclick="document.getElementById('linkRecommendations').style.display='none'">&times;</button>
+                        </div>
+                        <div id="linkRecommContent"></div>
+                    </div>
+
+                    <!-- Link Creator -->
+                    <div class="side-section">
+                        <h4 class="side-section-title">Create Link</h4>
+                        <p class="side-hint">Click two topics on the map to create a causality link, or use AI recommendations.</p>
+                        <div class="link-creator">
+                            <div class="link-node-slot" id="linkFrom">
+                                <span class="slot-label">From:</span>
+                                <span class="slot-value" id="linkFromName">Click a topic...</span>
+                            </div>
+                            <div class="link-arrow-icon">&#8594;</div>
+                            <div class="link-node-slot" id="linkTo">
+                                <span class="slot-label">To:</span>
+                                <span class="slot-value" id="linkToName">Click another topic...</span>
+                            </div>
+                        </div>
+                        <select class="filter-select" id="linkType" style="width:100%;margin:8px 0;">
+                            <option value="influences">Influences</option>
+                            <option value="accelerates">Accelerates</option>
+                            <option value="constrains">Constrains</option>
+                            <option value="depends_on">Depends On</option>
+                            <option value="disrupts">Disrupts</option>
+                            <option value="enables">Enables</option>
+                        </select>
+                        <button class="btn btn-primary" style="width:100%" onclick="createManualLink()">Create Link</button>
+                        <button class="btn btn-secondary" style="width:100%;margin-top:6px;" onclick="aiSuggestLinkType()">AI: Suggest Link Type</button>
+                    </div>
+
+                    <!-- Active Topics List -->
+                    <div class="side-section">
+                        <h4 class="side-section-title">Active Topics <span class="card-badge" id="topicCount">0</span></h4>
+                        <div class="topics-filter">
+                            <input type="text" class="topics-search" id="topicSearchInput" placeholder="Search topics..." oninput="filterTopicList()">
+                        </div>
+                        <div class="topics-list" id="topicsList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARCHITECTURE PAGE -->
+        <section class="page" id="page-architecture">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title">Platform Architecture</h1>
+                    <p class="page-desc">The 5 Core Pillars and Sensemaking Infrastructure powering the intelligence engine</p>
+                </div>
+            </div>
+
+            <!-- 5 Core Pillars -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">5 Core Pillars of Strategic Intelligence</h3>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card pillar-1">
+                        <div class="pillar-number">01</div>
+                        <h4>Personalized & Tailored Intelligence</h4>
+                        <p>Intelligence customized by role, sector, and strategic context. Every user receives decision-relevant insights, not generic reports.</p>
+                        <div class="pillar-features">
+                            <span>Role-based views</span>
+                            <span>Custom alerts</span>
+                            <span>Contextual briefings</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-2">
+                        <div class="pillar-number">02</div>
+                        <h4>Expert Validation at Scale</h4>
+                        <p>Human expertise integrated at every stage - from signal validation to scenario stress-testing - using structured expert networks.</p>
+                        <div class="pillar-features">
+                            <span>Expert networks</span>
+                            <span>Delphi method</span>
+                            <span>Peer review</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-3">
+                        <div class="pillar-number">03</div>
+                        <h4>Continuous Real-time Intelligence</h4>
+                        <p>Always-on signal scanning, trend monitoring, and scenario probability updates. The platform never sleeps.</p>
+                        <div class="pillar-features">
+                            <span>Live scanning</span>
+                            <span>Auto-clustering</span>
+                            <span>Dynamic scoring</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-4">
+                        <div class="pillar-number">04</div>
+                        <h4>Intelligence at the Nexus</h4>
+                        <p>Vertical depth within topics combined with horizontal cross-sectoral intelligence. See how energy connects to geopolitics, how AI intersects with labor.</p>
+                        <div class="pillar-features">
+                            <span>Vertical depth</span>
+                            <span>Cross-sector links</span>
+                            <span>Transformation maps</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-5">
+                        <div class="pillar-number">05</div>
+                        <h4>Collective Intelligence Infrastructure</h4>
+                        <p>A shared intelligence backbone enabling communities, working groups, and networks to contribute to and benefit from the collective knowledge.</p>
+                        <div class="pillar-features">
+                            <span>Community input</span>
+                            <span>Crowd forecasting</span>
+                            <span>Shared insights</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intelligence Vision -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">From Knowledge Mapping to Foresight Co-Pilot</h3>
+                </div>
+                <div class="vision-comparison">
+                    <div class="vision-box current">
+                        <h4>Current State</h4>
+                        <p>Platform focuses on <strong>knowledge mapping</strong> - organizing, cataloging, and displaying existing information and research.</p>
+                        <ul>
+                            <li>Static content curation</li>
+                            <li>Publication repositories</li>
+                            <li>Topic-based browsing</li>
+                            <li>Manual analysis</li>
+                        </ul>
+                    </div>
+                    <div class="vision-arrow">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="vision-box future">
+                        <h4>Future State</h4>
+                        <p>Platform becomes a <strong>foresight co-pilot</strong> - an AI-augmented intelligence engine that actively generates actionable insights.</p>
+                        <ul>
+                            <li>AI signal detection & clustering</li>
+                            <li>Automated trend monitoring</li>
+                            <li>Dynamic scenario modeling</li>
+                            <li>Strategy stress-testing copilot</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sensemaking Architecture -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Sensemaking Layer Architecture</h3>
+                    <span class="card-badge">4-layer system</span>
+                </div>
+                <div class="arch-grid">
+                    <div class="arch-layer" style="border-left: 4px solid #0B2545;">
+                        <div class="arch-layer-header">
+                            <span class="arch-layer-num">L1</span>
+                            <h4>Knowledge / Data System</h4>
+                        </div>
+                        <p>Foundation layer - all data ingestion, storage, and semantic processing</p>
+                        <div class="arch-components">
+                            <span>Forum Publications</span>
+                            <span>Third-Party Content</span>
+                            <span>Event Transcripts</span>
+                            <span>Data Lake</span>
+                            <span>NLP & GPT Tagging</span>
+                            <span>Content Scraping</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer" style="border-left: 4px solid #1E40AF;">
+                        <div class="arch-layer-header">
+                            <span class="arch-layer-num">L2</span>
+                            <h4>Authoring / Editing System</h4>
+                        </div>
+                        <p>Human curation, expert review, and content quality assurance</p>
+                        <div class="arch-components">
+                            <span>Map Curators</span>
+                            <span>Expert Validation</span>
+                            <span>Content Frameworks</span>
+                            <span>Custom Map Generation</span>
+                            <span>Editorial Workflow</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer" style="border-left: 4px solid #3B82F6;">
+                        <div class="arch-layer-header">
+                            <span class="arch-layer-num">L3</span>
+                            <h4>Foresight System</h4>
+                        </div>
+                        <p>The analytical engine - signal processing, trend analysis, scenario building</p>
+                        <div class="arch-components">
+                            <span>Signal Clustering AI</span>
+                            <span>Threshold Monitoring</span>
+                            <span>Impact-Uncertainty Scoring</span>
+                            <span>Scenario Modeling</span>
+                            <span>Foresight Sandbox</span>
+                            <span>Wild Card Detection</span>
+                        </div>
+                    </div>
+                    <div class="arch-layer" style="border-left: 4px solid #93C5FD;">
+                        <div class="arch-layer-header">
+                            <span class="arch-layer-num">L4</span>
+                            <h4>Human System</h4>
+                        </div>
+                        <p>Community intelligence, expert networks, and collaborative sensemaking</p>
+                        <div class="arch-components">
+                            <span>Expert Networks</span>
+                            <span>Community Intelligence</span>
+                            <span>Working Groups</span>
+                            <span>Virtual Sessions</span>
+                            <span>Focused Discussions</span>
+                            <span>Crowd Forecasting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input-Process-Output Flow -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Intelligence Flow: Input - Process - Output</h3>
+                </div>
+                <div class="ipo-flow">
+                    <div class="ipo-section ipo-input">
+                        <h4>Input Sources</h4>
+                        <div class="ipo-items">
+                            <div class="ipo-item">Forum Publications & Stories</div>
+                            <div class="ipo-item">Third-Party Content Partners</div>
+                            <div class="ipo-item">Event Transcripts (via Emergent)</div>
+                            <div class="ipo-item">Expert Network Contributions</div>
+                            <div class="ipo-item">Community Meeting Insights</div>
+                            <div class="ipo-item">Virtual Session Data</div>
+                            <div class="ipo-item">Social Listening & OSINT</div>
+                            <div class="ipo-item">Academic & Research Databases</div>
+                        </div>
+                    </div>
+                    <div class="ipo-arrows">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="ipo-section ipo-process">
+                        <h4>AI Processing Agents</h4>
+                        <div class="ipo-items">
+                            <div class="ipo-item">Source Scraping Agents</div>
+                            <div class="ipo-item">Signal Clustering AI Agents</div>
+                            <div class="ipo-item">Signal-to-Trend Execution Agent</div>
+                            <div class="ipo-item">Threshold Monitoring Agents</div>
+                            <div class="ipo-item">Expert Validation & Testing</div>
+                            <div class="ipo-item">NLP & Semantic Tagging</div>
+                            <div class="ipo-item">Metadata Processing</div>
+                            <div class="ipo-item">AI Scenario Modeling</div>
+                        </div>
+                    </div>
+                    <div class="ipo-arrows">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                    </div>
+                    <div class="ipo-section ipo-output">
+                        <h4>Intelligence Outputs</h4>
+                        <div class="ipo-items">
+                            <div class="ipo-item">Transparent Signal Cluster Map</div>
+                            <div class="ipo-item">Top 10 Trends per Topic</div>
+                            <div class="ipo-item">Structured Intelligence Feeds</div>
+                            <div class="ipo-item">Transformation Maps</div>
+                            <div class="ipo-item">Dynamic Briefings</div>
+                            <div class="ipo-item">Scenario Milestones Monitor</div>
+                            <div class="ipo-item">Foresight Sandbox Access</div>
+                            <div class="ipo-item">Horizon Scans & Collections</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foresight Feature Matrix -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Platform Feature Matrix</h3>
+                    <span class="card-badge">10 core capabilities</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Feature</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td style="font-weight:700">Vertical Depth of Topical Knowledge</td>
+                                <td><span class="signal-domain-tag">Intelligence</span></td>
+                                <td>Deep domain expertise and curated content per topic area</td>
+                                <td><span class="status-badge status-monitoring">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td style="font-weight:700">Publications & Academic Sources</td>
+                                <td><span class="signal-domain-tag">Intelligence</span></td>
+                                <td>Integration with academic databases, research papers, and publications</td>
+                                <td><span class="status-badge status-monitoring">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td style="font-weight:700">Stakeholder Analysis</td>
+                                <td><span class="signal-domain-tag">Intelligence</span></td>
+                                <td>Map key actors, their interests, influence, and power dynamics</td>
+                                <td><span class="status-badge status-new">Planned</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td style="font-weight:700">Signals & Trends Engine</td>
+                                <td><span class="signal-domain-tag">Foresight</span></td>
+                                <td>Automated signal detection, clustering, and trend identification</td>
+                                <td><span class="status-badge status-escalated">Building</span></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td style="font-weight:700">Scenario Construction</td>
+                                <td><span class="signal-domain-tag">Foresight</span></td>
+                                <td>2x2 scenario matrix with impact-uncertainty scoring and driver analysis</td>
+                                <td><span class="status-badge status-escalated">Building</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td style="font-weight:700">Stakeholder Power Analysis</td>
+                                <td><span class="signal-domain-tag">Foresight</span></td>
+                                <td>Who gains/loses power under each scenario</td>
+                                <td><span class="status-badge status-new">Planned</span></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td style="font-weight:700">Scenario Trajectory Monitoring</td>
+                                <td><span class="signal-domain-tag">Foresight</span></td>
+                                <td>Real-time tracking of leading indicators for each scenario</td>
+                                <td><span class="status-badge status-escalated">Building</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td style="font-weight:700">Strategy Stress-Testing</td>
+                                <td><span class="signal-domain-tag">Foresight</span></td>
+                                <td>Test strategic options against all scenario conditions</td>
+                                <td><span class="status-badge status-monitoring">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td style="font-weight:700">Strategic Optionality</td>
+                                <td><span class="signal-domain-tag">Foresight</span></td>
+                                <td>Identify and maintain strategic options that perform across scenarios</td>
+                                <td><span class="status-badge status-new">Planned</span></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td style="font-weight:700">Horizontal Cross-Sectoral Intelligence</td>
+                                <td><span class="signal-domain-tag">Intelligence</span></td>
+                                <td>Cross-domain relationship mapping and dependency analysis</td>
+                                <td><span class="status-badge status-escalated">Building</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scenario Detail Modal -->
+    <div class="modal-overlay" id="scenarioModal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Scenario Matrix + Stress Test Overlay -->
+    <div class="scenario-overlay" id="scenarioOverlay" style="display:none;">
+        <div class="scenario-overlay-inner">
+            <!-- Header -->
+            <div class="scenario-header">
+                <div class="scenario-header-left">
+                    <h2 class="scenario-title" id="scenarioTopicTitle">Scenario Analysis</h2>
+                    <p class="scenario-subtitle" id="scenarioSubtitle">AI-generated 2x2 uncertainty matrix</p>
+                </div>
+                <button class="scenario-close" onclick="closeScenarioOverlay()">&times;</button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="scenario-loading" id="scenarioLoading" style="display:none;">
+                <div class="scenario-loading-spinner"></div>
+                <p class="scenario-loading-text" id="scenarioLoadingText">AI is identifying critical uncertainties...</p>
+            </div>
+
+            <!-- Content (hidden until generated) -->
+            <div class="scenario-content" id="scenarioContent" style="display:none;">
+                <div class="scenario-main-layout">
+                    <!-- Left: 2x2 Matrix -->
+                    <div class="scenario-matrix-panel">
+                        <!-- Axes Labels -->
+                        <div class="matrix-axes" id="matrixAxes">
+                            <div class="axis-y-label" id="axisYLabel">Uncertainty Axis Y</div>
+                            <div class="axis-x-label" id="axisXLabel">Uncertainty Axis X</div>
+                            <div class="axis-y-high">High</div>
+                            <div class="axis-y-low">Low</div>
+                            <div class="axis-x-low">Low</div>
+                            <div class="axis-x-high">High</div>
+                        </div>
+
+                        <!-- 2x2 Grid -->
+                        <div class="matrix-grid">
+                            <div class="matrix-cell cell-tl" id="scenarioQ1" onclick="selectScenario(0)">
+                                <div class="cell-label">Q1</div>
+                                <h4 class="cell-name" id="scenarioQ1Name">—</h4>
+                                <p class="cell-desc" id="scenarioQ1Desc"></p>
+                            </div>
+                            <div class="matrix-cell cell-tr" id="scenarioQ2" onclick="selectScenario(1)">
+                                <div class="cell-label">Q2</div>
+                                <h4 class="cell-name" id="scenarioQ2Name">—</h4>
+                                <p class="cell-desc" id="scenarioQ2Desc"></p>
+                            </div>
+                            <div class="matrix-cell cell-bl" id="scenarioQ3" onclick="selectScenario(2)">
+                                <div class="cell-label">Q3</div>
+                                <h4 class="cell-name" id="scenarioQ3Name">—</h4>
+                                <p class="cell-desc" id="scenarioQ3Desc"></p>
+                            </div>
+                            <div class="matrix-cell cell-br" id="scenarioQ4" onclick="selectScenario(3)">
+                                <div class="cell-label">Q4</div>
+                                <h4 class="cell-name" id="scenarioQ4Name">—</h4>
+                                <p class="cell-desc" id="scenarioQ4Desc"></p>
+                            </div>
+                        </div>
+
+                        <!-- Scenario Detail Expand -->
+                        <div class="scenario-detail-box" id="scenarioDetailBox" style="display:none;">
+                            <div class="scenario-detail-header">
+                                <h4 id="scenarioDetailName"></h4>
+                                <button class="side-close" onclick="document.getElementById('scenarioDetailBox').style.display='none'">&times;</button>
+                            </div>
+                            <div class="scenario-detail-body" id="scenarioDetailBody"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Stress Test Chat -->
+                    <div class="stress-test-panel">
+                        <div class="stress-test-header">
+                            <h3>Stress Test</h3>
+                            <p>Challenge these scenarios with questions. The AI will analyze implications across all 4 futures.</p>
+                        </div>
+
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="chat-msg chat-ai">
+                                <div class="chat-avatar">AI</div>
+                                <div class="chat-bubble">Scenarios generated. Ask me anything to stress-test them — try questions like:<br><br>
+                                    <em>"What happens to supply chains in each scenario?"</em><br>
+                                    <em>"Which scenario is most likely by 2030?"</em><br>
+                                    <em>"What are the early warning signals for Q1?"</em><br>
+                                    <em>"How should a CEO prepare across all four?"</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-area">
+                            <input type="text" class="chat-input" id="chatInput" placeholder="Ask a stress-test question..." onkeydown="if(event.key==='Enter')sendChatMessage()">
+                            <button class="chat-send-btn" onclick="sendChatMessage()">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- Quick Prompts -->
+                        <div class="chat-quick-prompts">
+                            <button class="quick-prompt" onclick="sendQuickPrompt('Which scenario is most probable by 2030 and why?')">Most likely?</button>
+                            <button class="quick-prompt" onclick="sendQuickPrompt('What early warning signals should we monitor for each scenario?')">Early signals</button>
+                            <button class="quick-prompt" onclick="sendQuickPrompt('What is the best hedging strategy across all 4 scenarios?')">Hedging strategy</button>
+                            <button class="quick-prompt" onclick="sendQuickPrompt('What wild card event could invalidate all 4 scenarios?')">Wild cards</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="intelligence-map.js"></script>
+</body>
+</html>
