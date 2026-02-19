@@ -959,7 +959,7 @@ async function scanNewsWithAI() {
 
     try {
         const result = await callAI(
-            `You are a strategic intelligence analyst for the World Economic Forum Strategic Intelligence platform. You analyze current global news and map them to WEF Transformation Map topics. Always return valid JSON only, no markdown.`,
+            `You are a strategic intelligence analyst for the Astrid Strategic Intelligence Platform, aligned with the World Economic Forum taxonomy. You analyze current global news and map them to WEF Transformation Map topics. Always return valid JSON only, no markdown.`,
             `Analyze the most important current global news and developments as of February 2026. For each, identify:
 1. The news topic/headline
 2. The most relevant WEF Strategic Intelligence category
